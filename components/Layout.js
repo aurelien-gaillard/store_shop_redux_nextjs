@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import Navbar from '../features/header/Navbar'
 import Sidebar from '../features/header/Sidebar'

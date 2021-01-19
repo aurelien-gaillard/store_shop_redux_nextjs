@@ -11,9 +11,7 @@ const CartPage = () => {
   const cart = useSelector((state) => state.cart.cart)
 
   useEffect(() => {
-    if (cart.length !== 0) {
-      dispatch(calculateTotals())
-    }
+    dispatch(calculateTotals())
   }, [cart])
 
   if (cart.length < 1) {

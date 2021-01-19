@@ -9,4 +9,4 @@ On \_app.js, put the layout component and global style
 To deploy Next on Netlify, follow https://github.com/netlify/next-on-netlify
 
 The CSS and the design of this application was taken from the repository of https://www.johnsmilga.com/
-A lot of great resources and tuturials are available from this website
+A lot of great resources and tutorials are available from this website

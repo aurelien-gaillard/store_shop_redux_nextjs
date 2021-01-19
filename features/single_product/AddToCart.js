@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import { FaCheck } from 'react-icons/fa'
-import AmountButtons from './AmountButtons'
+import AmountButtons from '../../components/AmountButtons'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../cart/cartSlice'
 

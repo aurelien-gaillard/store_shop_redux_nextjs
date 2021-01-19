@@ -5,3 +5,5 @@ Create babelrc.js
 Put the babel_plugin in dev-dependency
 
 On \_app.js, put the layout component and global style
+
+To deploy Next on Netlify, follow https://github.com/netlify/next-on-netlify

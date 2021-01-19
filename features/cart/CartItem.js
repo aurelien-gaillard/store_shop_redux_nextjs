@@ -2,18 +2,18 @@ import React from 'react'
 import styled from 'styled-components'
 import { FaTrash } from 'react-icons/fa'
 import { formatPrice } from '../../utils/helpers'
-import AmountButtons from '../single_product/AmountButtons'
+import AmountButtons from '../../components/AmountButtons'
 import { useDispatch } from 'react-redux'
-import { removeItem } from './cartSlice'
+import { decreaseAmount, increaseAmount, removeItem } from './cartSlice'
 
 const CartItem = ({ id, image, name, color, price, amount }) => {
   const dispatch = useDispatch()
 
   const increase = () => {
-    ////toggleAmount(id, 'inc')
+    dispatch(increaseAmount(id))
   }
   const decrease = () => {
-    //toggleAmount(id, 'dec')
+    dispatch(decreaseAmount(id))
   }
 
   return (

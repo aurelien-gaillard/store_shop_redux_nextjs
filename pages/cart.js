@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import PageHero from '../components/PageHero'
 import CartContent from '../features/cart/CartContent'
+import { calculateTotals } from '../features/cart/cartSlice'
 
 const CartPage = () => {
+  const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart.cart)
+
+  useEffect(() => {
+    if (cart.length !== 0) {
+      dispatch(calculateTotals())
+    }
+  }, [cart])
 
   if (cart.length < 1) {
     return (

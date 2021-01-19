@@ -23,7 +23,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>Bio Products shop</title>
+        <title>E-Shop Nabytek</title>
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />

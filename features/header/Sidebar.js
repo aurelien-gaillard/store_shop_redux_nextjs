@@ -5,6 +5,7 @@ import { links } from '../../utils/constants'
 import { FaTimes } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeSidebar } from './headerSlice'
+import CartButtons from '../cart/CartButtons'
 
 const Sidebar = () => {
   const dispatch = useDispatch()
@@ -34,6 +35,7 @@ const Sidebar = () => {
             )
           })}
         </ul>
+        <CartButtons />
       </aside>
     </Wrapper>
   )

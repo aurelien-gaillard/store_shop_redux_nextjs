@@ -7,6 +7,7 @@ import {
   updateFilters,
   clearFilters,
   updateFilteredProducts,
+  updateSort,
 } from './filterSlice'
 
 const Filters = () => {
@@ -22,7 +23,7 @@ const Filters = () => {
     max_price,
     shipping,
   } = filters
-
+  const sort = useSelector((state) => state.filter.sort)
   const all_products = useSelector((state) => state.products.products)
 
   const categories = getUniqueValues(all_products, 'category')
@@ -32,6 +33,7 @@ const Filters = () => {
   useEffect(() => {
     if (all_products.length !== 0) {
       dispatch(updateFilteredProducts(all_products))
+      dispatch(updateSort(sort))
     }
   }, [filters])
 

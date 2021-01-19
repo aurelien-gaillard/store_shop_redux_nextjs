@@ -5,6 +5,7 @@ import { FaBars } from 'react-icons/fa'
 import { links } from '../../utils/constants'
 import { useDispatch } from 'react-redux'
 import { openSidebar } from './headerSlice'
+import CartButtons from '../cart/CartButtons'
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -36,6 +37,7 @@ const Navbar = () => {
             )
           })}
         </ul>
+        <CartButtons />
       </div>
     </Wrapper>
   )

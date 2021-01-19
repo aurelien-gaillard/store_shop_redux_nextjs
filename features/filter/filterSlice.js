@@ -18,15 +18,16 @@ const initialState = {
 
 export const updateSort = createAsyncThunk(
   'filter/updateSort',
-  async (e, { getState }) => {
-    const value = e.target.value
+  async (value, { getState }) => {
     let newList = getState().filter.filtered_products
     if (value === 'price-lowest') {
       newList = newList.slice().sort((a, b) => a.price - b.price)
     } else if (value === 'price-highest') {
       newList = newList.slice().sort((a, b) => b.price - a.price)
     } else if (value === 'name-a') {
+      newList = newList.slice().sort((a, b) => a.name.localeCompare(b.name))
     } else if (value === 'name-z') {
+      newList = newList.slice().sort((a, b) => b.name.localeCompare(a.name))
     }
     return { newList, value }
   }

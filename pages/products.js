@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PageHero from '../components/PageHero'
 import Filters from '../features/filter/Filters'
+import Sort from '../features/filter/Sort'
 import ProductList from '../features/products/ProductList'
 
 const products = () => {
@@ -12,7 +13,7 @@ const products = () => {
         <div className='section-center products'>
           <Filters />
           <div>
-            {/* <Sort /> */}
+            <Sort />
             <ProductList />
           </div>
         </div>

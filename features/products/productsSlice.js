@@ -3,7 +3,8 @@ import axios from 'axios'
 
 const initialState = {
   products: [],
-  status: 'idle',
+  featured_products: [],
+  status: 'idle', //idle, loading, succeeded, failed
   error: null,
 }
 
@@ -22,8 +23,19 @@ const productsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [fetchProducts.pending]: (state, action) => {
+      state.status = 'loading'
+    },
     [fetchProducts.fulfilled]: (state, action) => {
+      state.status = 'succeeded'
       state.products = action.payload
+      state.featured_products = action.payload.filter(
+        (product) => product.featured === true
+      )
+    },
+    [fetchProducts.rejected]: (state, action) => {
+      state.status = 'failed'
+      state.error = action.error.message
     },
   },
 })

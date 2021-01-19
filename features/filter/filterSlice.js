@@ -1,8 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   filtered_products: [],
-  all_products: [],
   grid_view: true,
   sort: 'price-lowest',
   filters: {
@@ -16,6 +15,22 @@ const initialState = {
     shipping: false,
   },
 }
+
+export const updateSort = createAsyncThunk(
+  'filter/updateSort',
+  async (e, { getState }) => {
+    const value = e.target.value
+    let newList = getState().filter.filtered_products
+    if (value === 'price-lowest') {
+      newList = newList.slice().sort((a, b) => a.price - b.price)
+    } else if (value === 'price-highest') {
+      newList = newList.slice().sort((a, b) => b.price - a.price)
+    } else if (value === 'name-a') {
+    } else if (value === 'name-z') {
+    }
+    return { newList, value }
+  }
+)
 
 const filterSlice = createSlice({
   name: 'filter',
@@ -97,6 +112,20 @@ const filterSlice = createSlice({
       state.filters.price = state.filters.max_price
       state.filters.shipping = false
     },
+    // set the Grid view
+    gridView(state, action) {
+      state.grid_view = true
+    },
+    //set the List view
+    listView(state, action) {
+      state.grid_view = false
+    },
+  },
+  extraReducers: {
+    [updateSort.fulfilled]: (state, action) => {
+      state.sort = action.payload.value
+      state.filtered_products = action.payload.newList
+    },
   },
 })
 
@@ -105,6 +134,8 @@ export const {
   clearFilters,
   initializeFilters,
   updateFilteredProducts,
+  gridView,
+  listView,
 } = filterSlice.actions
 
 export default filterSlice.reducer
